@@ -1,0 +1,14 @@
+* Knowledge Base (=kb=)
+
+Knowledge Base is a static site generator that exists mostly to allow me to
+learn Rust. There are many static site generators out there, you shouldn't use
+this one. Perhaps one day that'll change.
+
+But, =kb= is unique in one way---it seeks to elevate Org mode to a position
+wherein those that prefer it to Markdown are not left wanting the rich features
+that Org mode provides.
+
+Note, however, that currently none of this works, and the first plan is to
+leverage existing Rust crates to spit out HTML. The literate programming
+functionalities, as well as the ability to render diagrams with tools like
+=ditaa= and =PlantUML=, are not present.
