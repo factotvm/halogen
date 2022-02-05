@@ -12,3 +12,22 @@ Note, however, that currently none of this works, and the first plan is to
 leverage existing Rust crates to spit out HTML. The literate programming
 functionalities, as well as the ability to render diagrams with tools like
 =ditaa= and =PlantUML=, are not present.
+
+** Tasks
+
+*** DONE Handle the source and destination directories
+
+To begin with, we need only specify the source and destination directories. To
+make it simple, the source will be =content=, and the destination will be
+=public=. If the source is not present, the app will panic, and if the
+destination is not present, it will be created.
+
+*** TODO Import =walkdir= and write out the source and destination for each
+
+We want a mapping between the source and the destination. For instance, if there
+is a file at =content/foo/bar.org=, it should create =public/foo/bar.html=. We
+need to handle the case, however, where there exists a =/content/foo/bar.org=
+and a =content/foo/bar.md= as they can both not generate to the html file. For
+now, we will panic. However, not all files generate the same output, so we need
+to be careful as =content/foo/bar.css= and =content/foo/bar.org= would be
+acceptable.
