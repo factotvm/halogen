@@ -39,14 +39,24 @@ trait Processor {
     fn write_to(&mut self, path: &Path) -> Result<(), ProcessorError>;
 }
 
+#[derive(Debug, PartialEq)]
 struct ProcessorError {
+    kind: ProcessorErrorKind,
     path: String,
 }
 
+#[derive(Debug, PartialEq)]
+enum ProcessorErrorKind {
+    Unknown,
+}
+
 impl From<std::io::Error> for ProcessorError {
-    fn from(_: Error) -> Self {
-        // ideally, would get the path here (or perhaps should convert)
-       ProcessorError { path: String::from("(unknown)") }
+    fn from(error: Error) -> Self {
+        ProcessorError {
+            kind: ProcessorErrorKind::Unknown,
+            // FIXME: this isn't a path...
+            path: String::from(format!("{:?}", error))
+        }
     }
 }
 
