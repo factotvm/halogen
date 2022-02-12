@@ -2,6 +2,8 @@ use std::fmt::Error;
 use std::fs;
 use std::path::Path;
 
+mod processor;
+
 const SRC_DIR: &str = "content";
 const DEST_DIR: &str = "public";
 
@@ -58,7 +60,7 @@ mod tests {
     fn create_path() -> String {
         match SystemTime::now().duration_since(UNIX_EPOCH) {
             Ok(n) => format!("/tmp/src-{}", n.as_nanos()),
-            _ => {panic!("unable to create timestamp for test path")}
+            _ => { panic!("unable to create timestamp for test path") }
         }
     }
 }

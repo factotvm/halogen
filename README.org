@@ -30,6 +30,16 @@ make it simple, the source will be =content=, and the destination will be
 =public=. If the source is not present, the app will panic, and if the
 destination is not present, it will be created.
 
+*** DONE Create factory to return processors for file paths
+
+I'm not convinced what the right way to do this is. At first, I thought I would
+pass a source path and a destination path, and let the proocessor write the new
+file. But, then I got the nagging feeling that it would be much easier to test
+if I just passed in strings and returned strings. That would give me a pure
+function, instead of some side effect over there on the file system. I'm
+positive someone has solved this conundrum before, but I don't really have time
+to look now.
+
 *** TODO Import =walkdir= and write out the source and destination for each
 
 We want a mapping between the source and the destination. For instance, if there
