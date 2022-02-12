@@ -1,3 +1,4 @@
+use std::convert::Infallible;
 use std::ffi::OsStr;
 use std::fmt::{Display, Formatter};
 use std::fs::File;
@@ -65,10 +66,9 @@ enum ProcessorKind {
 }
 
 impl FromStr for ProcessorKind {
-    /// This would be better as `!`, the never type (see: std/primitive.never)
-    type Err = ();
+    type Err = Infallible;
 
-    /// This will never return error result because Self::None captures that.
+    /// This will never return error result because Self::None captures it.
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {
             "css" => Ok(Self::Css),
